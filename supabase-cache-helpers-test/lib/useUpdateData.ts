@@ -1,7 +1,6 @@
 import {
   QueryWithoutWildcard,
   UsePostgrestSWRMutationOpts,
-  useInsertMutation,
   useUpdateMutation,
 } from "@supabase-cache-helpers/postgrest-swr";
 import { PostgrestQueryBuilder } from "@supabase/postgrest-js";
