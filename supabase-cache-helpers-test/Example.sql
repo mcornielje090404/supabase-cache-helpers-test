@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS "public"."Testing";
 
 create table public."Testing" (
-  id bigint generated always as identity primary key,
+  id UUID NOT NULL DEFAULT uuid_generate_v4(),
   name varchar,
   anotherColumn varchar
 );

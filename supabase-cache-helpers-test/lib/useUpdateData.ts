@@ -31,13 +31,13 @@ export const useUpdateData = <
   );
 
   const updateMutation = async (
-    data: T["Update"][],
+    data: T["Update"],
     callbacks?: Pick<
       SWRMutationConfiguration<any, any>,
       "onSuccess" | "onError"
     >
   ) => {
-    await update("id", data, callbacks);
+    await update(data, callbacks);
   };
 
   return { trigger: updateMutation };

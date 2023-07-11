@@ -4,7 +4,6 @@ import { getSupabaseClient } from "@/lib/getSupabaseClient";
 import { useUpdateData } from "@/lib/useUpdateData";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FormEvent } from "react";
 
 interface UpdateMutationTestFormProps {
   testObject: { id: string; name: string; anothercolumn: string | null };
@@ -27,18 +26,12 @@ export const UpdateMutationTestForm: React.FC<UpdateMutationTestFormProps> = ({
   const { trigger: update } = useUpdateData(supabase.from("Testing"), ["id"]);
 
   const handleSubmit = () => {
-    console.log("TESTING", {
-      ...testObject,
-      ...formObject,
-    });
-
     update(
-      [
-        {
-          ...testObject,
-          ...formObject,
-        },
-      ],
+      {
+        ...testObject,
+        ...formObject,
+      },
+
       { onSuccess: () => router.refresh() }
     );
   };

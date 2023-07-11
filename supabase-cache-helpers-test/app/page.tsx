@@ -8,9 +8,19 @@ const Home = async () => {
 
   const { data: testObjects } = await supabase.from("Testing").select();
 
+  const sortObjects = (a: any, b: any) => {
+    if (a?.id > b?.id) {
+      return 1;
+    } else if (a?.id < b?.id) {
+      return -1;
+    }
+
+    return 0;
+  };
+
   return (
     <>
-      {testObjects?.map((testObject) => {
+      {testObjects?.sort(sortObjects).map((testObject) => {
         return (
           <UpdateMutationTestForm
             key={testObject?.id}
